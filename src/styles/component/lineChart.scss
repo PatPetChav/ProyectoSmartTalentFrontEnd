@@ -1,0 +1,32 @@
+@import './../base/colours.scss';
+@import './../base/variables.scss';
+
+.lineChart{
+    width: 100%;
+    min-width: 25rem;
+    max-width: 40rem;
+    background: $lineChart-bg;
+    border-radius: 1.5rem;
+    padding: $padding_elemt;
+}
+
+.lineChart__graphic{
+    border-radius: 1rem;
+}
+
+.lineChart__content{
+    padding: 3rem 0;
+
+    h3{
+        color: $color-5-l;
+        margin-bottom: $margin_elemt;
+        text-align: left;
+    }
+    p{
+        color: $color-4-l;
+    }
+}
+
+// .apexcharts-canvas>svg{
+//     background: linear-gradient(195deg, $color-1, $color-2)!important;
+// }

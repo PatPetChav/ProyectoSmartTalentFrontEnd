@@ -1,0 +1,58 @@
+@import "./../base/colours.scss";
+@import "./../base/variables.scss";
+@import "./../base/mixins.scss";
+
+.menu {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  border-radius: 1rem;
+  background: $aside-bg;
+  overflow-y: auto;
+  box-shadow: rgb(0 0 0 / 5%) 0rem 1.25rem 1.6875rem 0rem;
+  border: none;
+
+  .menu__container {
+    padding: $padding-elemt 0;
+  }
+}
+
+.menu__title {
+  margin-bottom: $margin_elemt;
+  color: $neutral-2;
+}
+
+.menu__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu__link {
+  display: flex;
+  align-items: center;
+  padding: calc($padding_elemt/2) $padding_elemt;
+  margin-bottom: 2rem;
+  cursor: pointer;
+
+  &:last-child{
+    margin-bottom: 0;
+  }
+
+  .icon--menu{
+    color: $neutral-2;
+  }
+
+  p, span{
+    margin-bottom: 0;
+    color: $neutral-2;
+  }
+
+  &:hover {
+    background: $menu-item-hover;
+    border-radius: 1rem;
+  }
+
+  // &:active {
+  //   background: red;
+  //   border-radius: 1rem;
+  // }
+}

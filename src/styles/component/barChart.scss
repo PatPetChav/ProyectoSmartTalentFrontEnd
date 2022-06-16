@@ -1,0 +1,29 @@
+@import './../base/colours.scss';
+@import './../base/variables.scss';
+
+.barChart{
+    background: $barChart-bg;
+    border-radius: 1.5rem;
+    padding: $padding_elemt;
+    width: 100%;
+    min-width: 25rem;
+    max-width: 45rem;
+    // max-width: 40rem;
+}
+
+.barChart__graphic{
+    border-radius: 1rem;
+}
+
+.barChart__content{
+    padding: 3rem 0;
+
+    h3{
+        color: $color-5-l;
+        margin-bottom: $margin_elemt;
+        text-align: left;
+    }
+    p{
+        color: $color-4-l;
+    }
+}

@@ -1,0 +1,47 @@
+@import './../base/colours.scss';
+@import './../base/variables.scss';
+@import './../base/mixins.scss';
+
+.cards-home{
+    background-color: #2b2b2b;
+    .cards-home__container{
+        max-width: 100rem;
+    }
+}
+.gridCardsHome{
+    padding-bottom: 2rem;
+}
+.cards-title{
+    padding: calc($margin_elemt*3) 0 calc($margin_elemt*2);
+    color: #fff;
+}
+.card{
+    padding: $padding_elemt $padding_elemt calc($padding_elemt/2);
+}
+.card__description{
+    line-height: 2rem;
+}
+.card__name {
+    color: $color-5-l;
+    margin-bottom: $margin_elemt;
+}
+
+.card__span{
+    font-size: 1.2rem;
+    display: block;
+    @include telefono{
+        display: inline;
+        font-size: 1.4rem;
+    }
+    @include tablet{
+        font-size: 1.6rem;
+    }
+}
+
+.icon--card{
+    margin-right: calc($margin_elemt/2);
+    color: $color-4-l;
+    font-size: 2rem;
+    width: 2.5rem;
+}
+

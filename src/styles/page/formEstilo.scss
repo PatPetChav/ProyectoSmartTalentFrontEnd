@@ -1,0 +1,40 @@
+@import './../base/colours.scss';
+@import './../base/variables.scss';
+@import './../base/mixins.scss';
+
+
+
+.formEstilo {
+    background-repeat: no-repeat ;
+    height: auto;
+    min-height: 100vh;
+    width: 100%;
+    background:linear-gradient(90deg, #43c6ac 0%, #191654 100%);
+    // margin: 0px;
+    // width: auto,       
+    // margin: 20px auto,
+    // background: "#fff",
+    // padding: "2rem",
+    // borderRadius: "1rem",
+}
+.test-preguta-psicologico{
+    margin-bottom: 0;
+    font-size: 1.4rem;
+}
+
+.botonEstilo:hover{
+    background-color: #35b89e !important;
+    color: #191654;
+}
+.css-e4w4as-MuiFormLabel-root-MuiInputLabel-root{
+    font-size: 1.4rem !important;
+}
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+    font-size: 1.4rem !important;
+}
+.css-1rqg92u-MuiFormLabel-root-MuiInputLabel-root{
+    font-size: 1.4rem !important;
+}
+.css-ahj2mt-MuiTypography-root{
+    font-size: 1.2rem !important;
+}

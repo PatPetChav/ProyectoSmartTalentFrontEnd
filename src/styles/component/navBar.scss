@@ -1,0 +1,94 @@
+@import "./../base/colours.scss";
+@import "./../base/variables.scss";
+@import "./../base/mixins.scss";
+
+.navBar {
+  width: 100%;
+  background: $navBar-bg;
+  border-radius: 1rem;
+}
+
+.navBar--fijo {
+  background: $navBarFijo-bg;
+  border-radius: 1rem;
+  // box shadow
+  box-shadow: -3px 5px 14px -1px rgba(17,0,51,0.43);
+  -webkit-box-shadow: -3px 5px 14px -1px rgba(17,0,51,0.43);
+  -moz-box-shadow: -3px 5px 14px -1px rgba(17,0,51,0.43);
+  // blur
+  -webkit-backdrop-filter: saturate(200%) blur(1.9rem);
+  -o-filter-backdrop-filter: saturate(200%) blur(1.9rem);
+  -ms-filter-backdrop-filter: saturate(200%) blur(1.9rem);
+  -moz-backdrop-filter: saturate(200%) blur(1.9rem);
+  backdrop-filter: saturate(200%) blur(1.9rem);
+}
+
+.navBar__container {
+  display: flex;
+  justify-content: space-between;
+  padding: $padding_elemt;
+
+  a svg, button svg{
+    color: $icon-nav;
+    font-size: 1.5rem;
+  }
+}
+
+.navBar__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navBar__item--page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  span{
+    color: $link-nav;
+    text-transform: capitalize;
+  }
+  p{
+    color: #000;
+    font-weight: 700;
+    font-size: 2rem;
+    text-transform: capitalize;
+    margin-top: calc($margin_elemt/2);
+  }
+
+
+  .page {
+    margin-bottom: $margin_elemt;
+  }
+}
+
+.navBar__item--icon {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  color: #000;
+
+  .icon--navBar {
+    &:hover {
+      background: $icon-bg-hover;
+      padding: 1rem;
+      border-radius: 50%;
+    }
+  }
+
+  .icon--bar{
+    cursor: pointer;
+  }
+
+  .icon--bar svg{
+    display: block;
+    // visibility: visible;
+
+    @include desktop{
+      display: none;
+      // visibility: hidden;
+    }
+  }
+}

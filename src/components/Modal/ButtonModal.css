@@ -1,0 +1,74 @@
+.modal {
+    background-color: gray;
+
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232));
+    padding-bottom: 15px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.icon--modal .icon{
+    color: black;
+}
+
+.container-icon{
+    padding-right: 8px;
+}
+
+.img-user {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 30px;
+    border: 1px solid black;
+}
+
+.texto {
+    color: black;
+}
+
+h4 {
+    padding-left:  9px;
+}
+
+.container-icon-title {
+    display: flex;
+    flex-direction: row;
+}
+
+.div {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.titulo-icon {
+    font-size: 16px;
+    color: black;
+}
+
+span {
+    font-weight: bold;
+}
+
+.css-bhp9pd-MuiPaper-root-MuiCard-root{
+    border-radius: 1.5rem !important;
+}
+
+/*
+1. Combinación de negro con blanco
+2. Combinación de negro con gris
+3. Combinación de negro con rojo
+4. Combinación de negro con rosa
+5. Combinación de negro con amarillo
+6. Combinación de negro con naranja
+7. Combinación de negro con dorado
+8. Combinación de negro con morado
+9. Combinación de negro con azul 
+*/

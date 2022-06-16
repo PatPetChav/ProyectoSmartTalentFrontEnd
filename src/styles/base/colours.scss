@@ -1,0 +1,86 @@
+//* Color Palette - SCSS RGB
+//* Palette Theme Light
+//$color-1-l: rgb(240, 242, 245); // bg main
+$color-1-l: rgb(224, 226, 230); // bg main
+$color-2-l: rgb(66, 66, 74); // bg aside 1
+$color-3-l: rgb(25, 25, 25); // bg aside 2
+$color-4-l: rgb(123, 128, 154); // icon nav
+$color-5-l: rgb(52, 71, 103); // texto icon / dashboard nav
+$color-6-l: rgba(255,255,255,0.6); // link
+//* Palette Theme Dark
+$color-1-d: rgb(26, 32, 53); // bg main
+$color-2-d: rgb(31, 40, 62); // bg aside
+$color-3-d: rgb(32, 41, 64); // bg table
+$color-4-d: rgba(255, 255, 255, 0.6); // texto icon 
+//* Palette main
+$color-1:rgb(73, 163, 241); //bg gradient 1a
+$color-2:rgb(26, 115, 232); //bg gradient 1b
+$color-3:rgb(102, 187, 106); //bg gradient 2a
+$color-4:rgb(67, 160, 71); //bg gradient 2b
+$color-5:rgb(255, 167, 38); //bg gradient 3a
+$color-6:rgb(251, 140, 0); //bg gradient 3b
+$color-7:rgb(239, 83, 80); //bg gradient 4a
+$color-8:rgb(229, 57, 53); //bg gradient 4b
+$color-9:rgb(236, 64, 122); //bg gradient 5a
+$color-10:rgb(216, 27, 96); //bg gradient 5b
+$color-10:rgb(50, 58, 84); //bg gradient 6a
+$color-10:rgb(26, 32, 53); //bg gradient 6b
+//* Palette Neutral
+$neutral-1: rgba(0 , 0, 0, 1);
+$neutral-2: rgba(255 , 255, 255, 1);
+
+
+//* Theme Light
+//* Text 
+$titles: $neutral-2;
+$paragraph: $neutral-2;
+$link: $neutral-2;
+$link-nav: $color-5-l;
+$link-hover: $neutral-2;
+$icon: $neutral-2; 
+$icon-nav: $color-4-l; 
+$icon-hover: $neutral-2;
+$icon-bg-hover: rgba($color: $neutral-1, $alpha: 0.2);
+//* Background
+$main-bg: $color-1-l;
+$aside-bg: linear-gradient(195deg, $color-2-l, $color-3-l);
+$navBar-bg: transparent;
+$navBarFijo-bg: rgba($color: $neutral-2, $alpha: 0.8);
+$content: $color-1-d;
+$menu-item-hover: rgba($color: $neutral-2, $alpha: 0.4);
+$tables-bg: $neutral-2;
+$tablesTitle-bg: linear-gradient(195deg, $color-1, $color-2);
+//* Charts
+$lineChart-bg: $neutral-2;
+$barChart-bg: $neutral-2;
+$lineChartGraphic-bg: linear-gradient(195deg, $color-1, $color-2);
+// $barChartGraphic-bg: linear-gradient(195deg, $color-3, $color-4);
+//* Shadow
+$shadow: rgba($color: $neutral-1, $alpha: 0.5);
+
+
+//* Theme Dark
+//* Text 
+$titles-d: $neutral-2;
+$paragraph-d: $neutral-2;
+$link-d: $color-4-d;
+$link-hover-d: $neutral-2;
+$icon-d: $color-4-d; 
+$icon-hover-d: $neutral-2;
+$icon-bg-hover-d: rgba($color: $neutral-2, $alpha: 0.4);
+//* Background
+$main-bg-d: $color-1-d;
+$aside-bg-d: $color-2-d;
+$navBar-bg-d: transparent;
+$navBarFijo-bg-d: rgba($color: $color-1-d, $alpha: 0.8);
+$content-d: $color-1-d;
+$menu-item-hover-d: rgba($color: $neutral-2, $alpha: 0.4);
+$tables-bg-d: $color-3-d;
+$tablesTitle-bg-d: linear-gradient(195deg, $color-1, $color-2);
+//* Charts
+$lineChart-bg-d: $color-3-d;
+$lineChartGraphic-bg-d: linear-gradient(195deg, $color-1, $color-2);
+$barChart-bg-d: $color-3-d;
+$barChartGraphic-bg-d: linear-gradient(195deg, $color-3, $color-4);
+//* Shadow
+$shadow-d: rgba($color: $neutral-1, $alpha: 0.5);

@@ -1,0 +1,17 @@
+@import './../base/colours.scss';
+@import './../base/variables.scss';
+@import './../base/mixins.scss';
+
+.dashboard{
+    width: 100%;
+    background-color: transparent;
+    padding: $padding-elemt 0;
+}
+
+.dashboard__charts{
+    display: flex;
+    flex-wrap: wrap;  
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-evenly;
+}

@@ -1,0 +1,77 @@
+/** Media Queries **/
+@import 'variables.scss';
+
+// Media queries
+@mixin telefono {
+    @media only screen and (min-width: $telefono) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media only screen and (min-width: $tablet) {
+        @content;
+    }
+}  
+@mixin desktop {
+    @media only screen and (min-width: $desktop) {
+        @content;
+    }
+}
+@mixin macbook_air {
+    @media only screen and (min-width: $macbook_air) {
+        @content;
+    }
+}
+@mixin macbook_pro_13 {
+    @media only screen and (min-width: $macbook_pro_13) {
+        @content;
+    }
+}
+
+// Grid
+@mixin grid-columns($column1,$column2,$spacing) {
+    grid-template-rows: unset;
+    display: grid;
+    column-gap: $spacing;
+    grid-template-columns: $column1 $column2;
+    align-items: center;
+    justify-items: center;
+    grid-auto-flow: column;
+}
+@mixin grid-rows($row1,$row2,$spacing) {
+    grid-template-columns: unset;
+    display:grid;
+    row-gap: $spacing;
+    grid-template-rows: $row1 $row2;
+    align-items: center;
+    justify-items: center;
+}
+@mixin grid-col-row($columns,$rows,$spacing) {
+    display:grid;
+    gap: $spacing;
+    grid-template-columns: repeat($columns, 1fr);
+    grid-template-rows: repeat($rows, 1fr);
+    align-items: center;
+    justify-items: center;
+}
+
+// Buttons
+@mixin buttonSmall($bgColor,$bgColorHover,$display) {
+    display: $display;
+    padding: 0.6rem 1rem;
+    border:none;
+    border-radius: 5rem;   
+    text-align: center;
+    text-decoration: none;
+    transition-property: background-color;
+    transition-duration: 0.8s;
+    background-color: $bgColor; 
+    cursor: pointer;
+    &:hover{
+        background-color: $bgColorHover;
+    }
+    @include tablet{
+        padding: 0.8rem 2rem;
+        margin: 0;
+    }   
+}
