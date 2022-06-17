@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import CloseIcon from '@mui/icons-material/Close';
 //material
-import { Dialog, DialogContent,Card, CardContent, Grid, Container } from '@mui/material';
+import { Dialog, DialogContent, Card, CardContent, Grid, Container } from '@mui/material';
 import './ButtonModal.css';
 //importando informacion
 import Personal from "./Info-Personal/Personal";
@@ -25,39 +25,40 @@ export const ButtonModal = ({ applicant, qualifications, announcements, academic
     const [psy, setPsy] = useState({});
     const [work, setWork] = useState({});
     const [acade, setAcade] = useState({});
+    console.log("qualification", qualifications);
 
     const handleOpenDialog = () => {
-        if(psycho.length > 0 || trabajo.length > 0 || academics.length > 0){
-        const data = psycho.find((element) => element.id_postulante === applicant.id_postulante);
-        const result = trabajo.find((element) => element.id_postulante === applicant.id_postulante);
-        const resultAcademic = academics.find((element) => element.id_postulante === applicant.id_postulante);
-        setPsy(data);
-        setAcade(resultAcademic);
-        setWork(result);
+        if (psycho.length > 0 || trabajo.length > 0 || academics.length > 0) {
+            const data = psycho.find((element) => element.postulante_id === qualifications.postulante.postulante_id);
+            const result = trabajo.find((element) => element.postulante_id === qualifications.postulante.postulante_id);
+            const resultAcademic = academics.find((element) => element.postulante_id === qualifications.postulante.postulante_id);
+            setPsy(data);
+            setAcade(resultAcademic);
+            setWork(result);
         }
         setOpen(!open);
 
     };
-    
 
-    return(
-        <>        
+
+    return (
+        <>
             <IconButton color="primary" onClick={handleOpenDialog} aria-label="modal" variant="contained" className="icon--modal">
                 <FontAwesomeIcon icon={faEye} className="icon" onClick={handleOpenDialog} />
             </IconButton>
-        
+
             <Dialog open={open} onClose={handleOpenDialog} fullWidth maxWidth={"xl"}>
                 <DialogContent className="modal">
                     <IconButton onClick={handleOpenDialog} classname="button-close">
-                        <CloseIcon className="icon-exit" color="error" variant="contained" fontSize="large"/>
+                        <CloseIcon className="icon-exit" color="error" variant="contained" fontSize="large" />
                     </IconButton>
-                    <img className="img-user" src={applicant.photo} alt=""/>
+                    {/* <img className="img-user" src={applicant.photo} alt=""/> */}
                     <Container maxWidth="xl">
                         <Grid container spacing={2} className="card-container" fullWidth>
-                            <Grid item md={4} sx={{borderRadius:"1rem"}}>
+                            <Grid item md={4} sx={{ borderRadius: "1rem" }}>
                                 <Card>
-                                    <CardContent className="card" sx={{borderRadius:"2rem !important"}}>
-                                        <Personal applicant={applicant}/>
+                                    <CardContent className="card" sx={{ borderRadius: "2rem !important" }}>
+                                        <Personal applicant={qualifications.postulante} />
                                     </CardContent>
                                 </Card>
                             </Grid>
@@ -65,14 +66,14 @@ export const ButtonModal = ({ applicant, qualifications, announcements, academic
                                 <Card>
                                     <CardContent className="card">
                                         <Academic acade={acade}/>
-                                        <Psicologico psy={psy} />
+                                        <Psicologico psy={qualifications} />
                                     </CardContent>
                                 </Card>
                             </Grid>
                             <Grid item md={4}>
                                 <Card>
                                     <CardContent className="card">
-                                        <Calificacion applicant={applicant} qualifications={qualifications}/>
+                                        <Calificacion applicant={qualifications.postulante} qualifications={qualifications}/>
                                         <Laboral work={work} />
                                     </CardContent>  
                                 </Card> 

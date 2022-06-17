@@ -17,7 +17,7 @@ const Laboral = ({ work }) => {
                     <h4  className="titulo-icon">Descripcion:</h4>
                 </div>
                 <span>
-                        {work.breve_descripcion_actividad}   
+                        {work.descripcion_actividad}   
                 </span>
             </div>
             <div className="div">

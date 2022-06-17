@@ -10,7 +10,7 @@ const Psicologico = ({ psy }) => {
                     <h4 className="titulo-icon">Calificacion Psicologica:</h4>
                 </div>
                 <span>
-                    {psy?.calificacion}
+                    {psy?.calf_psicologica}
                 </span>
             </div>
         </>

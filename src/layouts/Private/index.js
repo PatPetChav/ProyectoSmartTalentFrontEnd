@@ -1,15 +1,16 @@
 // Importando Hooks
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 // Importando Context
 import { UserContext } from "../../context/UserContext";
 // Importando react-router-dom
-import { Navigate, Outlet} from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import { estaLogeado } from "../../service/authServices";
 
 const Private = () => {
-  const { user } = useContext(UserContext);
+ 
+  console.log("Estalogeado",estaLogeado())
 
-  // Validamos si el usuario existe, si no existe se redirige automáticamente la página al login
-  if (!user) {
+  if (!estaLogeado()) {
     return <Navigate to="/sign-in" />;
   }
 

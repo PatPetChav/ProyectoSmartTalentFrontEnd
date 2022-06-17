@@ -6,6 +6,7 @@ import { UserContext } from "../../context/UserContext";
 import { loginUser } from "../../service/firestore";
 //
 import logo from "./../../assets/img/SmartTalent.png";
+
 // Importando Material
 import {
   Container,
@@ -26,6 +27,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 // Importando Sweet Alert
 import swal from "sweetalert";
+import { Authentication } from "../../service/authServices";
 
 function Copyright(props) {
   return (
@@ -50,7 +52,7 @@ export default function SignIn() {
   const { storeUser } = useContext(UserContext);
 
   const [userData, setUserData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
@@ -64,25 +66,21 @@ export default function SignIn() {
   };
 
   const handleClickLogin = async () => {
-    const { email, password } = userData;
-    let response = await loginUser(email, password);
+    
+    let response = await Authentication(userData)		
 
-    if (!response.ok) {
+    if (!response) {
       // si esto es falso el usuario no existe por ende lo vamos a crear
       // response = await storeUserFirebase(email, password);
-
-      if (!response.ok) {
         swal({
           title: "Error",
-          text: response.data,
+          text: "Credenciales incorrectas",
           icon: "error",
         });
-        return;
-      }
+        return;      
     }
     // después del login el createUser se debe guardar al usuario en userContext para ser utilizado en las valaidaciones del layout private y aside log out
-    storeUser(response.data.user);
-    // Después de hacer click en iniciar sesion y haga las verificaciones respectivas te redirige al dashboard
+        // Después de hacer click en iniciar sesion y haga las verificaciones respectivas te redirige al dashboard
     window.location.href = "/dashboard/dashboard";
   };
 
@@ -144,7 +142,7 @@ export default function SignIn() {
               fullWidth
               id="email"
               label="Email"
-              name="email"
+              name="username"
               autoComplete="email"
               autoFocus
               onChange={handleChangeInput}

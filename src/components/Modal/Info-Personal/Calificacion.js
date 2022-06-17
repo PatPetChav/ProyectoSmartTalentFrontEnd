@@ -7,62 +7,62 @@ import SmsIcon from '@mui/icons-material/Sms';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import AltRouteIcon from '@mui/icons-material/AltRoute';
 
-const Calificacion = ({applicant, qualifications}) => {
+const Calificacion = ({ applicant, qualifications }) => {
   return (
     <>
       <div className="div">
         <div className="container-icon-title">
-            <NoteAltIcon/>
-            <h4 className="titulo-icon">Calificacion Academica:</h4>
+          <NoteAltIcon />
+          <h4 className="titulo-icon">Calificacion Academica:</h4>
         </div>
         <span>
-          {qualifications.length > 0 && qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_academica}
+          {qualifications.calf_academica}
         </span>
       </div>
 
       <div className="div">
         <div className="container-icon-title">
-            <GroupAddIcon />
-            <h4 className="titulo-icon">Calificacion Asertividad:</h4>
+          <GroupAddIcon />
+          <h4 className="titulo-icon">Calificacion Asertividad:</h4>
         </div>
         <span>
-          {qualifications.length > 0 && qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_asertividad}
+          {qualifications.calf_asertividad}
         </span>
       </div>
       <div className="div">
         <div className="container-icon-title">
-            <AccessibilityNewIcon />
-            <h4 className="titulo-icon">Calificacion Autoestima:</h4>
+          <AccessibilityNewIcon />
+          <h4 className="titulo-icon">Calificacion Autoestima:</h4>
         </div>
         <span>
-          {qualifications.length > 0 && qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_autoestima}
+          {qualifications.calf_autoestima}
         </span>
       </div>
       <div className="div">
         <div className="container-icon-title">
-            <SmsIcon />
-            <h4 className="titulo-icon">Calificacion Comunicacion:</h4>
+          <SmsIcon />
+          <h4 className="titulo-icon">Calificacion Comunicacion:</h4>
         </div>
         <span>
-          {qualifications.length > 0 && qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_comunicacion}
+          {qualifications.calf_comunicacion}
         </span>
       </div>
       <div className="div">
         <div className="container-icon-title">
-            <PsychologyIcon />
-            <h4 className="titulo-icon">Calificacion Psicologica:</h4>
+          <PsychologyIcon />
+          <h4 className="titulo-icon">Calificacion Psicologica:</h4>
         </div>
         <span>
-          {qualifications.length > 0 && qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_psicologica}
+          {qualifications.calf_psicologica}
         </span>
       </div>
       <div className="div">
         <div className="container-icon-title">
-            <AltRouteIcon />
-            <h4 className="titulo-icon">Calificacion Toma de Decision:</h4>
+          <AltRouteIcon />
+          <h4 className="titulo-icon">Calificacion Toma de Decision:</h4>
         </div>
         <span>
-          {qualifications.length > 0 && qualifications.find((qualification) =>qualification.id_postulante === applicant.id_postulante)?.calif_toma_desicion}
+          {qualifications.calf_tomadecision}
         </span>
       </div>
     </>

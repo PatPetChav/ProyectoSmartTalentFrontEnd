@@ -22,6 +22,12 @@ import {
 } from "@mui/material";
 // Importando estilos
 import "./../../styles/page/tables.scss";
+import { getPostulante } from "../../service/postulanteServices";
+import { getCardsHome } from "../../service/cardsHomeServices";
+import { getCalificacion } from "../../service/calificacionServices";
+import { getAcademico } from "../../service/academicoServices";
+import { getPsicologico } from "../../service/psicologicoServices";
+import { getLaboral } from "../../service/laboral.Services";
 
 
 const Tables = () => {
@@ -40,41 +46,53 @@ const Tables = () => {
 
   // Obteniendo la base de datos tblPostulantes
   const fetchApplicants = async () => {
-    const data = await getApplicants();
-    setApplicants(data);
-    // console.log(applicants);
+    const data = await getPostulante();
+    if(data.ok){
+      setApplicants(data.content);
+    }
+    // console.log("applicants",applicants);
   };
 
   // Obteniendo la base de datos tblConvocatoria
   const fetchAnnouncements = async () => {
-    const data = await getAnnouncements();
-    setAnnouncements(data);
+    const data = await getCardsHome();
+    if(data.ok){
+      setAnnouncements(data.content);
+    }
     // console.log(data)
   };
 
   // Obteniendo la base de datos tblCalificacion
   const fetchQualifications = async () => {
-    const data = await getQualifications();
-    setQualifications(data);
+    const data = await getCalificacion();
+    if(data.ok){
+      setQualifications(data.content);
+    }
     // console.log(data)
   };
 
   // Obtner la base de datos tbAcademico
   const fetchAcademics = async() => {
-    const data = await getAcademics();
-    setAcademics(data);
+    const data = await getAcademico();
+    if(data.ok){
+      setAcademics(data.content);
+    }
   }
 
   //Obtener la base de datos de tbPsicologico
   const fetchPsycho = async() => {
-    const data = await getPsychological();
-    setPsycho(data);
+    const data = await getPsicologico();
+    if(data.ok){
+      setPsycho(data.content);
+    }
   }
 
   //Obtener la base de datos de tbLaboral
   const fetchLabor = async() => {
-    const data = await getLabor();
-    setTrabajo(data);
+    const data = await getLaboral();
+    if(data.ok){
+      setTrabajo(data.content);
+    }
   }
 
   //Inicializando los fetch
@@ -136,8 +154,8 @@ const Tables = () => {
           </TableHead>
 
           <TableBody>
-            {(applicants.length > 0) && (announcements.length > 0) && (qualifications.length > 0) &&
-              applicants.map((applicant, index) => (
+            {(qualifications.length > 0) &&
+              qualifications.map((qualification, index) => (
                 <TableRow
                   key={index}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -147,21 +165,21 @@ const Tables = () => {
                     scope="row"
                     style={{ fontSize: "1.4rem", color: "rgb(52, 71, 103)" }}
                   >
-                    {applicant.nombre_postulante}
+                    {qualification.postulante.postulante_nombre}
                   </TableCell>
 
                   <TableCell
                     align="right"
                     style={{ fontSize: "1.4rem", color: "rgb(52, 71, 103)" }}
                   >
-                    {applicant.apellido_postulante}
+                    {qualification.postulante.postulante_apellido}
                   </TableCell>
 
                   <TableCell
                     align="right"
                     style={{ fontSize: "1.4rem", color: "rgb(52, 71, 103)" }}
                   >
-                    {applicant.numero_celular}
+                    {qualification.postulante.postulante_celular}
                   </TableCell>
 
                   <TableCell
@@ -171,19 +189,14 @@ const Tables = () => {
                       color: "rgb(52, 71, 103)",
                     }}
                   >
-                    {announcements.find(
-                        (announcement) =>
-                          announcement.id_convocatoria ===
-                          applicant.id_convocatoria
-                      ).nombre_convocatoria}
+                    {qualification.convocatoria.convocatoria_nombre}
                   </TableCell>
 
                   <TableCell
                     align="right"
                   >
                     <Slider
-                      defaultValue={+(qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_academica) + +(qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_laboral) + +(qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_psicologica)}
-
+                      defaultValue={+qualification.calf_academica + +qualification.calf_laboral +  +qualification.calf_psicologica}
                       aria-label="Always visible"
                       valueLabelDisplay="on"
                       max={200}
@@ -198,27 +211,8 @@ const Tables = () => {
                     align="right"
                     style={{ fontSize: "1.4rem", color: "rgb(52, 71, 103)" }}
                   >
-                    <ButtonModal applicant={applicant} announcements={announcements} qualifications={qualifications} academics={academics} psycho={psycho} trabajo={trabajo}/>
+                    <ButtonModal  applicant={applicants} announcements={announcements} qualifications={qualification} academics={academics} psycho={psycho} trabajo={trabajo}/>
                   </TableCell>
-
-
-                  {/* <TableCell
-                    align="right"
-                    style={{ fontSize: "1.4rem", color: "rgb(52, 71, 103)" }}
-                    className="modal--icons"
-                  >
-                    <p>{announcements.map((announcement)=>announcement)}</p>
-                    <FontAwesomeIcon icon={faEye} className="icon" onClick={handleOpenDialog} />
-                    <ButtonModal 
-                      applicant={applicant}
-                      announcements={announcements}
-                      qualifications={qualifications}
-                    />
-                  </TableCell> */}
-
-                  {/* <TableCell align="right" style={{fontSize:'1.4rem', color:'#fff'}}>
-                    <FontAwesomeIcon icon={faEye} className="icon"/>
-                  </TableCell> */}
                 </TableRow>
               ))}
           </TableBody>

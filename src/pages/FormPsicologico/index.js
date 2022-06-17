@@ -76,7 +76,8 @@ const FormPsicologico = () => {
 
   const handleChangeCalificacion = (event) => {
     setValues({
-      id_test: event.target.name,
+      postulante_id:idPostulante,
+      test_id: event.target.name,
       calificacion: event.target.value,
     });
 
