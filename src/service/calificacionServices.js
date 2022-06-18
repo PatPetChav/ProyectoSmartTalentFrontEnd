@@ -6,6 +6,11 @@ export const getCalificacion = async () => {
     return calificacion.data;
 }
 
+export const getCalificacionDash = async (notaMinima) => {
+    const calificacion = await axios.get(URL_BACKEND + "/dashboard/" + notaMinima)
+    return calificacion.data;
+}
+
 export const postCalificacion = async (calificacion) => {
     console.log(calificacion)
 

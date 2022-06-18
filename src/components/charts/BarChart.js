@@ -8,60 +8,37 @@ import Chart from "react-apexcharts";
 import _, { sortBy } from "lodash";
 // Importando estilos
 import "./../../styles/component/barChart.scss";
+import { getCalificacionDash } from "../../service/calificacionServices";
 
 const BarChart = (props) => {
   // Inicializando el chartData para el apexchart
   const [chartData, setChartData] = useState(null);
 
-  // Obteniendo la base de datos tblPostulantes
-  const fetchApplicants = async () => {
-    const data = await getApplicants();
-    return data;
-  };
-
-  // Obteniendo la base de datos tblConvocatoria
-  const fetchAnnouncements = async () => {
-    const data = await getAnnouncements();
-    return data;
+  const fetchDash = async () => {
+    const data = await getCalificacionDash(110);
+    return data.content;
   };
 
   const buildChart = async () => {
-    const applicants = await fetchApplicants();
-    const announcements = await fetchAnnouncements();
-
-    // Agrupando la data de postulantes por id_convocatoria
-    const groupedResult = _.chain(applicants)
-      .groupBy((item) => {
-        return item.id_convocatoria;
-      })
-      .map((value, key) => ({ key, items: value }))
-      .value();
-
-    // Obteniendo el nombre de la convocatoria por el id_convocatoria
-    const names = sortBy(announcements, "id_convocatoria").map(
-      (item) => item.nombre_convocatoria
-    );
-    // const names = groupedResult.map(
-    //   (_announcement, index) => announcements[index].nombre_convocatoria
-    // );
-
-    // Obteniendo el número de postulantes por id_convocatoria
-    const counts = groupedResult.map(
-      (announcement) => announcement.items.length
-    );
+    const dataDash = await fetchDash();
+    
+    const convocPostulante = await dataDash.map((data)=>data.convocatoria_postulantes)
+    const convocNombre = await dataDash.map((data)=>data.convocatoria_nombre)
+    // console.log("dataDash.convocatoria_postulantes,",convocPostulante);
+    // console.log("dataDash.convocatoria_nombre,",convocNombre);
 
     // Declarando la data para el apexChart
     const data = {
       series: [
         {
           name: "N° de postulaciones",
-          data: counts,
+          data: convocPostulante,
         },
       ],
       options: {
         xaxis: {
           tickPlacement: "on",
-          categories: names,
+          categories: convocNombre,
           labels: {
             style: {
               colors: "#fff",
@@ -78,9 +55,6 @@ const BarChart = (props) => {
           },
           min: 0,
         },
-        // theme:{
-        //   mode:'dark',
-        // },
         colors: ["#ffffff90"], //para el color de la linea de la gráfica lineal
         dataLabels: {
           enabled: false, // para activar la data encima de los markers

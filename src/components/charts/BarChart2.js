@@ -8,6 +8,7 @@ import Chart from "react-apexcharts";
 import _, { sortBy } from "lodash";
 // Importando estilos
 import "./../../styles/component/barChart.scss";
+import { getCalificacionDash } from "../../service/calificacionServices";
 
 const BarChart2 = (props) => {
   // Inicializando el chartData para el apexchart
@@ -25,9 +26,21 @@ const BarChart2 = (props) => {
     return data;
   };
 
+  
+  const fetchDash = async () => {
+    const data = await getCalificacionDash(110);
+    return data.content;
+  };
+
+
   const buildChart = async () => {
     const announcements = await fetchAnnouncements();
     const qualifications = await fetchQualifications();
+
+    const dataDash = await fetchDash();
+
+    const convocPostulanteAprob = await dataDash.map((data)=>data.convocatoria_aprobados)
+    const convocNombre = await dataDash.map((data)=>data.convocatoria_nombre)
     
     // Agrupando la data de calificaciones por id_convocatoria
     const groupedResult = _.chain(qualifications)
@@ -53,13 +66,13 @@ const BarChart2 = (props) => {
       series: [
         {
           name: "N° de postulantes aceptados",
-          data: counts,
+          data: convocPostulanteAprob,
         },
       ],
       options: {
         xaxis: {
           tickPlacement: "on",
-          categories: names,
+          categories: convocNombre,
           labels: {
             style: {
               colors: "#fff",
@@ -124,8 +137,8 @@ const BarChart2 = (props) => {
         )}
       </div>
       <div className="barChart__content">
-        <h3>Postulantes aceptados por convocatoria</h3>
-        <p>N° de postulaciones aceptados por convocatoria</p>
+        <h3>Postulantes aprobados por convocatoria</h3>
+        <p>N° de postulaciones aprobados por convocatoria</p>
       </div>
     </div>
   );

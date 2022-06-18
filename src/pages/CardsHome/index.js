@@ -42,6 +42,26 @@ const CardsHome = () => {
     localStorage.setItem("idConvocatoria", id);
   };
 
+  const FormatoFecha =(fecha) =>{
+    let d = new Date(fecha);
+    var month = new Array(11);
+    month[0] = "01";
+    month[1] = "02";
+    month[2] = "03";
+    month[3] = "04";
+    month[4] = "05";
+    month[5] = "06";
+    month[6] = "07";
+    month[7] = "08";
+    month[8] = "09";
+    month[9] = "10";
+    month[10] = "11";
+    month[11] = "12";
+    return d.getDate() + '/' + month[d.getMonth()] + "/" + d.getFullYear()
+  }
+
+  
+
   //Inicializando los fetch
   useEffect(() => {
     getCardsHome()
@@ -100,13 +120,13 @@ const CardsHome = () => {
                           icon={faLocationDot}
                           className="icon--card"
                         />
-                        <span className="card__span">Arequipa</span>
+                        <span className="card__span">{announcement.lugar}</span>
                       </Grid>
                       {/* Trabajar en conjunto con el área de SEGURIDAD y garantizar que en la compañía la SEGURIDAD ES LO PRIMERO. Garantizar la Calidad en planta a través de los SMD y Elementos Clave (EC) del sistema de Gestión de Calidad.  */}
 
                       <Grid item md={6} lg={6} sm={4} xs={6} mb={2}>
                         <FontAwesomeIcon icon={faUser} className="icon--card" />
-                        <span className="card__span">12 Vacantes</span>
+                        <span className="card__span">{announcement.numero_vacantes}</span>
                       </Grid>
 
                       <Grid item md={6} lg={6} sm={4} xs={6} mb={2}>
@@ -115,8 +135,7 @@ const CardsHome = () => {
                           className="icon--card"
                         />
                         <span className="card__span">
-                          01/01/2022 - 20/01/2022
-                        </span>
+                        {FormatoFecha(announcement.fecha_inicio)} - {FormatoFecha(announcement.fecha_termino)}</span>
                       </Grid>
 
                       <Grid item md={6} lg={6} sm={4} xs={6} mb={2}>
@@ -124,7 +143,7 @@ const CardsHome = () => {
                           icon={faMoneyBill}
                           className="icon--card"
                         />
-                        <span className="card__span">S/ 2500</span>
+                        <span className="card__span">{announcement.remuneracion}</span>
                       </Grid>
                     </Grid>
 
