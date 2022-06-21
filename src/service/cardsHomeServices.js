@@ -1,6 +1,7 @@
+import { URL_BACKEND } from '../environments/environments'
 
 export const getCardsHome = async () => {
-    const cards = await fetch("http://127.0.0.1:8000/api/cards-home/")
+    const cards = await fetch(URL_BACKEND + "/cards-home/")
     const json = await cards.json();
     return json;
 }
